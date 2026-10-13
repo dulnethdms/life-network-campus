@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Protect private application files from direct web access.
+RewriteCond %{REQUEST_URI} ^/life-network-campus/(app|config|routes|storage|database)/ [NC,OR]
+RewriteRule ^ - [F,L]
+
+# Route all non-file requests through the front controller.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
