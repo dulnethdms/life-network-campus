@@ -16,8 +16,8 @@
                     Life Network Campus helps students connect goals, skills, people, communities, and opportunities in one growth-focused platform.
                 </p>
                 <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                    <a class="card" href="/life-network-campus/register" style="padding:12px 18px; text-decoration:none; color:#fff; background:#67462d; border-radius:12px; font-weight:600;">Create account</a>
-                    <a class="card" href="/life-network-campus/login" style="padding:12px 18px; text-decoration:none; color:#1b1b1b; background:#f4efe9; border-radius:12px; font-weight:600;">Log in</a>
+                    <a class="card" href="/life-network-campus/public/register" style="padding:12px 18px; text-decoration:none; color:#fff; background:#67462d; border-radius:12px; font-weight:600;">Create account</a>
+                    <a class="card" href="/life-network-campus/public/login" style="padding:12px 18px; text-decoration:none; color:#1b1b1b; background:#f4efe9; border-radius:12px; font-weight:600;">Log in</a>
                 </div>
             </div>
             <div style="background:#f5efe8; border:1px solid #e8dfd2; border-radius:20px; padding:24px;">

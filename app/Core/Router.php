@@ -10,13 +10,16 @@ class Router
     public function dispatch(string $requestUri): void
     {
         $uri = parse_url($requestUri, PHP_URL_PATH) ?? '/';
-        $basePath = '/life-network-campus';
+        $basePaths = ['/life-network-campus/public', '/life-network-campus'];
 
-        if (str_starts_with($uri, $basePath)) {
-            $uri = substr($uri, strlen($basePath));
+        foreach ($basePaths as $basePath) {
+            if (str_starts_with($uri, $basePath)) {
+                $uri = substr($uri, strlen($basePath));
+                break;
+            }
         }
 
-        if ($uri === '') {
+        if ($uri === '' || $uri === '/') {
             $uri = '/';
         }
 

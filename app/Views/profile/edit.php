@@ -14,7 +14,7 @@
                     <h1 style="margin:0;">My profile</h1>
                     <p style="margin:6px 0 0; color:#4f4f4f;">Your account information and profile summary.</p>
                 </div>
-                <a href="/life-network-campus/dashboard" style="padding:10px 14px; border-radius:10px; background:#f4efe9; color:#1b1b1b; text-decoration:none; font-weight:600;">Dashboard</a>
+                <a href="/life-network-campus/public/dashboard" style="padding:10px 14px; border-radius:10px; background:#f4efe9; color:#1b1b1b; text-decoration:none; font-weight:600;">Dashboard</a>
             </div>
 
             <?php if (!empty($errors)): ?>
@@ -25,7 +25,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="post" action="/life-network-campus/profile">
+            <form method="post" action="/life-network-campus/public/profile">
                 <input type="hidden" name="csrf_token" value="<?php echo e(csrfToken()); ?>">
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">

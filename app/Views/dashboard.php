@@ -14,9 +14,9 @@
                 <p style="margin:6px 0 0; color:#4f4f4f;">Welcome back, <?php echo e($user['name'] ?? 'Student'); ?>.</p>
             </div>
             <div style="display:flex; gap:12px; align-items:center;">
-                <a href="/life-network-campus/profile" style="padding:10px 14px; border-radius:10px; background:#f4efe9; text-decoration:none; color:#1b1b1b; font-weight:600;">Profile</a>
-                <a href="/life-network-campus/settings" style="padding:10px 14px; border-radius:10px; background:#f4efe9; text-decoration:none; color:#1b1b1b; font-weight:600;">Settings</a>
-                <form method="post" action="/life-network-campus/logout">
+                <a href="/life-network-campus/public/profile" style="padding:10px 14px; border-radius:10px; background:#f4efe9; text-decoration:none; color:#1b1b1b; font-weight:600;">Profile</a>
+                <a href="/life-network-campus/public/settings" style="padding:10px 14px; border-radius:10px; background:#f4efe9; text-decoration:none; color:#1b1b1b; font-weight:600;">Settings</a>
+                <form method="post" action="/life-network-campus/public/logout">
                     <input type="hidden" name="csrf_token" value="<?php echo e(csrfToken()); ?>">
                     <button type="submit" style="padding:10px 14px; border:none; border-radius:10px; background:#67462d; color:white; font-weight:600; cursor:pointer;">Logout</button>
                 </form>

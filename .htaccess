@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteRule ^$ public/ [R=302,L]
+RewriteRule ^public/(.*)$ public/$1 [L]

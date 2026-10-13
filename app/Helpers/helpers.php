@@ -66,7 +66,7 @@ function renderView(string $viewName, array $data = []): void
 
 function redirect(string $path): void
 {
-    $target = str_starts_with($path, 'http') ? $path : '/life-network-campus' . $path;
+    $target = str_starts_with($path, 'http') ? $path : '/life-network-campus/public' . $path;
     header('Location: ' . $target);
     exit;
 }

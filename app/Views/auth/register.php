@@ -18,7 +18,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="post" action="/life-network-campus/register">
+            <form method="post" action="/life-network-campus/public/register">
                 <input type="hidden" name="csrf_token" value="<?php echo e(csrfToken()); ?>">
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
@@ -73,7 +73,7 @@
             </form>
 
             <p style="text-align:center; margin-top:18px; color:#4d4d4d;">
-                Already have an account? <a href="/life-network-campus/login" style="color:#67462d; font-weight:600;">Log in</a>
+                Already have an account? <a href="/life-network-campus/public/login" style="color:#67462d; font-weight:600;">Log in</a>
             </p>
         </div>
     </main>
