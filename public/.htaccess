@@ -1,7 +1,7 @@
 RewriteEngine On
 
 # Protect private application files from direct web access.
-RewriteCond %{REQUEST_URI} ^/life-network-campus/(app|config|routes|storage|database)/ [NC,OR]
+RewriteCond %{REQUEST_URI} ^/life-network-campus/(app|config|routes|storage|database)/ [NC]
 RewriteRule ^ - [F,L]
 
 # Route all non-file requests through the front controller.

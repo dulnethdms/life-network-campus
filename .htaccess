@@ -1,4 +1,13 @@
-RewriteEngine On
+<IfModule mod_rewrite.c>
+    RewriteEngine On
 
-RewriteRule ^$ public/ [R=302,L]
-RewriteRule ^public/(.*)$ public/$1 [L]
+    # Protect private files and directories from direct access
+    RewriteRule ^(\.env|\.git|app|config|database|routes|storage|tests)(/.*)?$ - [F,L,NC]
+
+    # Rewrite root to public/
+    RewriteRule ^$ public/ [L]
+
+    # Rewrite all other requests to public/ if not already starting with public/
+    RewriteCond %{REQUEST_URI} !^/life-network-campus/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

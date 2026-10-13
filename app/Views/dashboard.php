@@ -26,15 +26,15 @@
         <section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px;">
             <div class="card" style="padding:18px;">
                 <p style="color:#5a5a5a; margin:0 0 8px;">Goals</p>
-                <h2 style="margin:0; font-size:2rem;">0</h2>
+                <h2 style="margin:0; font-size:2rem;"><?php echo count($goals ?? []); ?></h2>
             </div>
             <div class="card" style="padding:18px;">
-                <p style="color:#5a5a5a; margin:0 0 8px;">Projects</p>
-                <h2 style="margin:0; font-size:2rem;">0</h2>
+                <p style="color:#5a5a5a; margin:0 0 8px;">Active goals</p>
+                <h2 style="margin:0; font-size:2rem;"><?php echo e($activeGoals ?? 0); ?></h2>
             </div>
             <div class="card" style="padding:18px;">
-                <p style="color:#5a5a5a; margin:0 0 8px;">Connections</p>
-                <h2 style="margin:0; font-size:2rem;">0</h2>
+                <p style="color:#5a5a5a; margin:0 0 8px;">Completed</p>
+                <h2 style="margin:0; font-size:2rem;"><?php echo e($completedGoals ?? 0); ?></h2>
             </div>
             <div class="card" style="padding:18px;">
                 <p style="color:#5a5a5a; margin:0 0 8px;">Notifications</p>
@@ -44,10 +44,21 @@
 
         <section style="margin-top:24px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:20px;">
             <div class="card" style="padding:20px;">
-                <h3 style="margin-top:0;">Your next priority</h3>
-                <p style="color:#4f4f4f; line-height:1.7; margin-bottom:0;">
-                    This dashboard is connected to the authenticated user record and is ready for the goal, project, and community modules that will be added in later phases.
-                </p>
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px;">
+                    <h3 style="margin:0;">Your next priority</h3>
+                    <a href="/life-network-campus/public/goals" style="padding:9px 12px; border-radius:10px; background:#67462d; color:white; text-decoration:none; font-weight:600;">Manage goals</a>
+                </div>
+                <?php if (!empty($goals)): ?>
+                    <?php $nextGoal = $goals[0]; ?>
+                    <p style="margin:0; color:#4f4f4f; line-height:1.7;">
+                        <strong><?php echo e($nextGoal['title'] ?? 'Goal'); ?></strong><br>
+                        <?php echo e($nextGoal['status'] ?? 'Not Started'); ?> · <?php echo e($nextGoal['category'] ?? 'Learning'); ?>
+                    </p>
+                <?php else: ?>
+                    <p style="color:#4f4f4f; line-height:1.7; margin-bottom:0;">
+                        You have not created any goals yet. Start by defining your first milestone and keep your plan visible from the dashboard.
+                    </p>
+                <?php endif; ?>
             </div>
             <div class="card" style="padding:20px;">
                 <h3 style="margin-top:0;">Quick profile snapshot</h3>

@@ -3,16 +3,19 @@
 namespace App\Controllers;
 
 use App\Middleware\AuthMiddleware;
+use App\Repositories\GoalRepository;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 
 class ProfileController
 {
     private UserRepository $userRepository;
+    private GoalRepository $goalRepository;
 
     public function __construct()
     {
         $this->userRepository = new UserRepository();
+        $this->goalRepository = new GoalRepository();
     }
 
     public function dashboard(): void
@@ -20,12 +23,27 @@ class ProfileController
         AuthMiddleware::requireLogin();
 
         $user = $this->userRepository->findById((int) $_SESSION['user_id']);
+        $goals = $this->goalRepository->listForUser((int) $_SESSION['user_id']);
+        $completedGoals = 0;
+        $activeGoals = 0;
+
+        foreach ($goals as $goal) {
+            if (($goal['status'] ?? 'Not Started') === 'Completed') {
+                $completedGoals++;
+            }
+            if (in_array(($goal['status'] ?? 'Not Started'), ['Not Started', 'In Progress', 'Paused'], true)) {
+                $activeGoals++;
+            }
+        }
+
         renderView('dashboard', [
             'title' => 'Dashboard',
             'user' => $user,
-            'goals' => [],
+            'goals' => $goals,
             'notifications' => 0,
             'projects' => [],
+            'activeGoals' => $activeGoals,
+            'completedGoals' => $completedGoals,
         ]);
     }
 
