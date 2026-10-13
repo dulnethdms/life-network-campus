@@ -33,6 +33,18 @@
                 <h2 style="margin:0; font-size:2rem;"><?php echo e($activeGoals ?? 0); ?></h2>
             </div>
             <div class="card" style="padding:18px;">
+                <p style="color:#5a5a5a; margin:0 0 8px;">Projects</p>
+                <h2 style="margin:0; font-size:2rem;"><?php echo count($projects ?? []); ?></h2>
+            </div>
+            <div class="card" style="padding:18px;">
+                <p style="color:#5a5a5a; margin:0 0 8px;">Communities</p>
+                <h2 style="margin:0; font-size:2rem;"><?php echo count($communities ?? []); ?></h2>
+            </div>
+            <div class="card" style="padding:18px;">
+                <p style="color:#5a5a5a; margin:0 0 8px;">Opportunities</p>
+                <h2 style="margin:0; font-size:2rem;"><?php echo count($opportunities ?? []); ?></h2>
+            </div>
+            <div class="card" style="padding:18px;">
                 <p style="color:#5a5a5a; margin:0 0 8px;">Completed</p>
                 <h2 style="margin:0; font-size:2rem;"><?php echo e($completedGoals ?? 0); ?></h2>
             </div>
@@ -44,9 +56,16 @@
 
         <section style="margin-top:24px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:20px;">
             <div class="card" style="padding:20px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
                     <h3 style="margin:0;">Your next priority</h3>
-                    <a href="/life-network-campus/public/goals" style="padding:9px 12px; border-radius:10px; background:#67462d; color:white; text-decoration:none; font-weight:600;">Manage goals</a>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <a href="/life-network-campus/public/goals" style="padding:9px 12px; border-radius:10px; background:#67462d; color:white; text-decoration:none; font-weight:600;">Manage goals</a>
+                        <a href="/life-network-campus/public/projects" style="padding:9px 12px; border-radius:10px; background:#f4efe9; color:#1b1b1b; text-decoration:none; font-weight:600;">Manage projects</a>
+                        <a href="/life-network-campus/public/communities" style="padding:9px 12px; border-radius:10px; background:#f4efe9; color:#1b1b1b; text-decoration:none; font-weight:600;">Manage communities</a>
+                        <a href="/life-network-campus/public/opportunities" style="padding:9px 12px; border-radius:10px; background:#f4efe9; color:#1b1b1b; text-decoration:none; font-weight:600;">Manage opportunities</a>
+                        <a href="/life-network-campus/public/opportunities/discover" style="padding:9px 12px; border-radius:10px; background:#f4efe9; color:#1b1b1b; text-decoration:none; font-weight:600;">Discover opportunities</a>
+                        <a href="/life-network-campus/public/portfolio" style="padding:9px 12px; border-radius:10px; background:#f4efe9; color:#1b1b1b; text-decoration:none; font-weight:600;">My portfolio</a>
+                    </div>
                 </div>
                 <?php if (!empty($goals)): ?>
                     <?php $nextGoal = $goals[0]; ?>

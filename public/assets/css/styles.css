@@ -30,6 +30,18 @@ body {
     color: var(--color-text);
 }
 
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+a {
+    touch-action: manipulation;
+}
+
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -41,4 +53,32 @@ main {
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 700px) {
+    main {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    [style*="grid-template-columns:1fr 1fr"],
+    [style*="grid-template-columns: 1fr 1fr"],
+    [style*="grid-template-columns:1.2fr 0.8fr"],
+    [style*="grid-template-columns: 1.2fr 0.8fr"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    [style*="display:flex"] {
+        max-width: 100%;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+        max-width: 100%;
+    }
 }

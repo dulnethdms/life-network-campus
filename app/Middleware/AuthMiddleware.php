@@ -9,7 +9,7 @@ class AuthMiddleware
     public static function requireLogin(): void
     {
         if (!self::isAuthenticated()) {
-            header('Location: /life-network-campus/login');
+            header('Location: /life-network-campus/public/login');
             exit;
         }
     }

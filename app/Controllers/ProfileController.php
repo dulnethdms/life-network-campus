@@ -3,7 +3,10 @@
 namespace App\Controllers;
 
 use App\Middleware\AuthMiddleware;
+use App\Repositories\CommunityRepository;
 use App\Repositories\GoalRepository;
+use App\Repositories\OpportunityRepository;
+use App\Repositories\ProjectRepository;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 
@@ -11,11 +14,17 @@ class ProfileController
 {
     private UserRepository $userRepository;
     private GoalRepository $goalRepository;
+    private ProjectRepository $projectRepository;
+    private CommunityRepository $communityRepository;
+    private OpportunityRepository $opportunityRepository;
 
     public function __construct()
     {
         $this->userRepository = new UserRepository();
         $this->goalRepository = new GoalRepository();
+        $this->projectRepository = new ProjectRepository();
+        $this->communityRepository = new CommunityRepository();
+        $this->opportunityRepository = new OpportunityRepository();
     }
 
     public function dashboard(): void
@@ -24,6 +33,9 @@ class ProfileController
 
         $user = $this->userRepository->findById((int) $_SESSION['user_id']);
         $goals = $this->goalRepository->listForUser((int) $_SESSION['user_id']);
+        $projects = $this->projectRepository->listForUser((int) $_SESSION['user_id']);
+        $communities = $this->communityRepository->listForUser((int) $_SESSION['user_id']);
+        $opportunities = $this->opportunityRepository->listForUser((int) $_SESSION['user_id']);
         $completedGoals = 0;
         $activeGoals = 0;
 
@@ -41,7 +53,9 @@ class ProfileController
             'user' => $user,
             'goals' => $goals,
             'notifications' => 0,
-            'projects' => [],
+            'projects' => $projects,
+            'communities' => $communities,
+            'opportunities' => $opportunities,
             'activeGoals' => $activeGoals,
             'completedGoals' => $completedGoals,
         ]);

@@ -3,8 +3,12 @@
 namespace App\Core;
 
 use App\Controllers\AuthController;
+use App\Controllers\CommunityController;
 use App\Controllers\GoalController;
+use App\Controllers\OpportunityController;
+use App\Controllers\PortfolioController;
 use App\Controllers\ProfileController;
+use App\Controllers\ProjectController;
 
 class Router
 {
@@ -46,6 +50,35 @@ class Router
             ['POST', '/goals/{id}/delete', [GoalController::class, 'delete']],
             ['POST', '/goals/{id}/steps/add', [GoalController::class, 'addStep']],
             ['POST', '/goals/{id}/steps/{stepId}/toggle', [GoalController::class, 'toggleStep']],
+            ['GET', '/projects', [ProjectController::class, 'index']],
+            ['GET', '/projects/new', [ProjectController::class, 'create']],
+            ['POST', '/projects/store', [ProjectController::class, 'store']],
+            ['GET', '/projects/{id}/edit', [ProjectController::class, 'edit']],
+            ['POST', '/projects/{id}/update', [ProjectController::class, 'update']],
+            ['POST', '/projects/{id}/delete', [ProjectController::class, 'delete']],
+            ['GET', '/communities', [CommunityController::class, 'index']],
+            ['GET', '/communities/new', [CommunityController::class, 'create']],
+            ['POST', '/communities/store', [CommunityController::class, 'store']],
+            ['GET', '/communities/{id}/edit', [CommunityController::class, 'edit']],
+            ['POST', '/communities/{id}/update', [CommunityController::class, 'update']],
+            ['POST', '/communities/{id}/delete', [CommunityController::class, 'delete']],
+            ['GET', '/opportunities', [OpportunityController::class, 'index']],
+            ['GET', '/opportunities/new', [OpportunityController::class, 'create']],
+            ['POST', '/opportunities/store', [OpportunityController::class, 'store']],
+            ['GET', '/opportunities/{id}/edit', [OpportunityController::class, 'edit']],
+            ['POST', '/opportunities/{id}/update', [OpportunityController::class, 'update']],
+            ['POST', '/opportunities/{id}/delete', [OpportunityController::class, 'delete']],
+            ['GET', '/opportunities/discover', [OpportunityController::class, 'discover']],
+            ['POST', '/opportunities/{id}/save', [OpportunityController::class, 'save']],
+            ['POST', '/opportunities/{id}/unsave', [OpportunityController::class, 'unsave']],
+            ['POST', '/opportunities/{id}/apply', [OpportunityController::class, 'apply']],
+            ['POST', '/opportunities/{id}/withdraw', [OpportunityController::class, 'withdraw']],
+            ['GET', '/portfolio', [PortfolioController::class, 'index']],
+            ['GET', '/portfolio/new', [PortfolioController::class, 'create']],
+            ['POST', '/portfolio/store', [PortfolioController::class, 'store']],
+            ['GET', '/portfolio/{id}/edit', [PortfolioController::class, 'edit']],
+            ['POST', '/portfolio/{id}/update', [PortfolioController::class, 'update']],
+            ['POST', '/portfolio/{id}/delete', [PortfolioController::class, 'delete']],
         ];
 
         foreach ($routes as [$routeMethod, $routeUri, $handler]) {
